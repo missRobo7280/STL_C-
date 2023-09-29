@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s;cin>>s;
+    string ans="";
+    string temp="";
+    for(int i=0;i<s.length();i++)
+    {
+        char c=s[i];
+        while(c!='+' || c!='-' || c!='*' || c!='/')
+        {
+            temp=c+temp;
+        }
+        while(!temp.empty())
+        {
+            ans+=temp;
+            temp="";
+        }
+    }
+    cout<<ans;
+}
