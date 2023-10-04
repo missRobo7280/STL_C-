@@ -1,0 +1,27 @@
+def count_min_digit_elements(input_array):
+    # Initialize variables to keep track of the minimum number of digits and count of such elements
+    min_digits = float('inf')
+    count = 0
+    
+    # Iterate through the input array
+    for num in input_array:
+        # Calculate the number of digits in the current element
+        num_digits = len(str(num))
+        
+        # If the current element has fewer digits than the minimum, update min_digits and reset count
+        if num_digits < min_digits:
+            min_digits = num_digits
+            count = 1
+        # If the current element has the same number of digits as the minimum, increment count
+        elif num_digits == min_digits:
+            count += 1
+    
+    return count
+
+# Input
+n = int(input())
+input_array = list(map(int, input().split()))
+
+# Calculate and print the count of elements with the minimum number of digits
+result = count_min_digit_elements(input_array)
+print(result)
