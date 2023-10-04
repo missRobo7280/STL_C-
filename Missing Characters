@@ -1,0 +1,9 @@
+input_string = input().lower()
+alphabet = set('abcdefghijklmnopqrstuvwxyz')
+input_set = set(input_string)
+missing_letters = alphabet - input_set
+output_string = ''.join(sorted(missing_letters))
+if output_string:
+    print(output_string)
+else:
+    print(0)
