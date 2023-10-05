@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+    int n;
+    cin >> n;
+
+    int len = s.length();
+    
+    if (len % n != 0) {
+        cout << "Invalid String" << endl;
+    } else {
+        int part_size = len / n;
+        for (int i = 0; i < len; i++) {
+            if (i > 0 && i % part_size == 0) {
+                cout << " ";
+            }
+            cout << s[i];
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
