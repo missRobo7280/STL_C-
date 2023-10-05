@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+using namespace std;
+
+string reverseWords(string s) {
+    // Initialize a vector to store words
+    vector<string> words;
+    
+    // Create a stringstream to tokenize the input string
+    stringstream ss(s);
+    string word;
+    
+    // Tokenize the input string and store words in the vector
+    while (ss >> word) {
+        words.push_back(word);
+    }
+    
+    // Initialize an empty result string
+    string result = "";
+    
+    // Iterate over the words in reverse order and append to the result string
+    for (int i = words.size() - 1; i >= 0; i--) {
+        result += words[i];
+        if (i > 0) {
+            result += " "; // Add a space if not the last word
+        }
+    }
+    
+    return result;
+}
+
+int main() {
+    string input;
+    getline(cin, input); // Read the input line with spaces
+    
+    string reversedString = reverseWords(input);
+    cout << reversedString << endl;
+    
+    return 0;
+}
