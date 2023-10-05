@@ -1,0 +1,67 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<int> unionArrays(const vector<int>& arr1, const vector<int>& arr2) {
+    vector<int> result;
+    int i = 0, j = 0;
+    
+    while (i < arr1.size() && j < arr2.size()) {
+        if (arr1[i] < arr2[j]) {
+            result.push_back(arr1[i]);
+            i++;
+        } else if (arr1[i] > arr2[j]) {
+            result.push_back(arr2[j]);
+            j++;
+        } else {
+            // Skip duplicates
+            result.push_back(arr1[i]);
+            i++;
+            j++;
+        }
+    }
+    
+    // Add remaining elements from arr1 (if any)
+    while (i < arr1.size()) {
+        result.push_back(arr1[i]);
+        i++;
+    }
+    
+    // Add remaining elements from arr2 (if any)
+    while (j < arr2.size()) {
+        result.push_back(arr2[j]);
+        j++;
+    }
+    
+    return result;
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    
+    vector<int> arr1(n);
+    vector<int> arr2(m);
+    
+    for (int i = 0; i < n; i++) {
+        cin >> arr1[i];
+    }
+    
+    for (int i = 0; i < m; i++) {
+        cin >> arr2[i];
+    }
+    
+    vector<int> result = unionArrays(arr1, arr2);
+    
+    // Remove duplicates
+    result.erase(unique(result.begin(), result.end()), result.end());
+    
+    // Output the sorted list without duplicates
+    for (int i = 0; i < result.size(); i++) {
+        cout << result[i] << " ";
+    }
+    
+    return 0;
+}
