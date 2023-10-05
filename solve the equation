@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int find_n(long long A) {
+    long long discriminant = 4 * A - 3;
+    if (discriminant < 0) {
+        return -1;  // No real solutions
+    }
+    double n1 = (-1 + sqrt(discriminant)) / 2;
+    double n2 = (-1 - sqrt(discriminant)) / 2;
+    if (floor(n1) == n1) {
+        return static_cast<int>(n1);
+    }
+    if (floor(n2) == n2) {
+        return static_cast<int>(n2);
+    }
+    return -1;  // No integer solutions
+}
+
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        long long A;
+        cin >> A;
+        int result = find_n(A);
+        cout << result << endl;
+    }
+    return 0;
+}
